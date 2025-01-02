@@ -7,5 +7,5 @@ src/**
 screenshots/**
 Contributing.md
 tsconfig.json
-prettier.config.cjs
-eslint.config.mjs
+*.config.cjs
+*.config.mjs
