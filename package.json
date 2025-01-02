@@ -1,0 +1,84 @@
+{
+  "name": "reveal-in-ghostty",
+  "displayName": "Reveal in Ghostty",
+  "description": "Reveal current project or folder in Ghostty",
+  "keywords": [
+    "reveal",
+    "open",
+    "external",
+    "app",
+    "application",
+    "ghostty",
+    "terminal",
+    "emulator"
+  ],
+  "version": "1.0.1",
+  "publisher": "sapegin",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/sapegin/vscode-reveal-in-ghostty",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sapegin/vscode-reveal-in-ghostty.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sapegin/vscode-reveal-in-ghostty/issues"
+  },
+  "sponsor": {
+    "url": "https://www.buymeacoffee.com/sapegin"
+  },
+  "galleryBanner": {
+    "color": "#ddecff"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "revealInGhostty.revealProject",
+        "title": "Project: Reveal in Ghostty"
+      },
+      {
+        "command": "revealInGhostty.revealFile",
+        "title": "File: Reveal in Ghostty"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "watch": "npm run esbuild-watch",
+    "lint": "eslint . --cache --fix",
+    "format": "prettier --log-level warn --write \"**/*.{js,mjs,cjs,ts,tsx,md}\"",
+    "pretest": "npm run lint",
+    "test": "npm run esbuild-base && tsc --noEmit",
+    "posttest": "npm run format",
+    "publish": "vsce publish",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^8.19.0",
+    "@typescript-eslint/parser": "^8.19.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.17.0",
+    "eslint-config-tamia": "^9.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.2"
+  },
+  "lint-staged": {
+    "*.{js,mjs,cjs,ts,tsx,md}": "prettier --write",
+    "*.{js,mjs,cjs,ts,tsx}": "eslint --cache --fix"
+  }
+}
