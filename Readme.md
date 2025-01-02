@@ -1,6 +1,6 @@
 # Reveal in Ghostty 📂
 
-Reveal current project or folder in [Ghostty](https://magnumbytes.com).
+Reveal current project or folder in [Ghostty](https://ghostty.org/).
 
 **[Install from Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=sapegin.reveal-in-ghostty)**
 
@@ -12,10 +12,10 @@ Reveal current project or folder in [Ghostty](https://magnumbytes.com).
 
 You can either run this commands from the Command Palette (<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on a Mac, or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> on Windows), or [assign hotkeys](https://code.visualstudio.com/docs/getstarted/keybindings).
 
-| Description | Name |
-| --- | --- |
-| Reveal project root folder | `revealInGhostty.revealProject` |
-| Reveal currently open folder | `revealInGhostty.revealFile` |
+| Description                  | Name                            |
+| ---------------------------- | ------------------------------- |
+| Reveal project root folder   | `revealInGhostty.revealProject` |
+| Reveal currently open folder | `revealInGhostty.revealFile`    |
 
 ## Changelog
 
