@@ -24,6 +24,7 @@ export function activate(context: ExtensionContext) {
   logMessage('📂 Reveal in Ghostty starting...');
 
   context.subscriptions.push(
+    // TODO: Fallback to a folder when no file is open
     commands.registerCommand('revealInGhostty.revealFile', () => {
       const { uri } = window.activeTextEditor?.document ?? {};
       if (uri === undefined) {
@@ -37,6 +38,7 @@ export function activate(context: ExtensionContext) {
 
       execute(`open -a 'Ghostty' '${folderPath}'`);
     }),
+    // TODO: Don't rely on active document in case there's no open file
     commands.registerCommand('revealInGhostty.revealProject', () => {
       const { uri } = window.activeTextEditor?.document ?? {};
       if (uri === undefined) {
