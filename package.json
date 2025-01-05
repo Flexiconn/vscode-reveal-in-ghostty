@@ -51,7 +51,7 @@
   },
   "scripts": {
     "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
-    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node --define:import.meta.url='_importMetaUrl' --banner:js='const _importMetaUrl=require(\"url\").pathToFileURL(__filename)'",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
     "watch": "npm run esbuild-watch",
@@ -76,6 +76,9 @@
     "lint-staged": "^15.3.0",
     "prettier": "^3.4.2",
     "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "open": "^10.1.0"
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,tsx,md}": "prettier --write",

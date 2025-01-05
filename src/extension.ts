@@ -1,19 +1,22 @@
 import childProcess from 'node:child_process';
+import path from 'node:path';
 import { promisify } from 'node:util';
 import { window, commands, type ExtensionContext, workspace } from 'vscode';
+import open from 'open';
 import { logMessage } from './debug';
-import path from 'node:path';
 
 export const promiseExec = promisify(childProcess.exec);
 
 /**
- * Execute command with error handling
+ * Open given path in Ghostty
+ * XXX: This supposed to work cross-platform but was only tested on macOS,
+ * and may need adjustments for other platforms
  */
-async function execute(command: string) {
+async function openGhostty(filepath: string) {
   try {
-    await promiseExec(command);
+    await open(filepath, { app: { name: 'ghostty' } });
   } catch (error) {
-    logMessage('Cannot execute command:', error);
+    logMessage('Cannot open Ghostty:', error);
     if (error instanceof Error) {
       window.showErrorMessage(error.message ?? 'Something went wrong');
     }
@@ -36,7 +39,7 @@ export function activate(context: ExtensionContext) {
 
       logMessage('Reval file', folderPath);
 
-      execute(`open -a 'Ghostty' '${folderPath}'`);
+      openGhostty(folderPath);
     }),
     // TODO: Don't rely on active document in case there's no open file
     commands.registerCommand('revealInGhostty.revealProject', () => {
@@ -54,7 +57,7 @@ export function activate(context: ExtensionContext) {
 
       logMessage('Reval project', projectPath);
 
-      execute(`open -a 'Ghostty' '${projectPath}'`);
+      openGhostty(projectPath);
     }),
   );
 }
