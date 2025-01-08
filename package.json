@@ -38,6 +38,14 @@
   ],
   "main": "out/extension.js",
   "contributes": {
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "revealInGhostty.revealFile",
+          "group": "navigation"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "revealInGhostty.revealProject",
