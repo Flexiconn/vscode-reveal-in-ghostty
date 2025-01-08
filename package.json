@@ -38,24 +38,26 @@
   ],
   "main": "out/extension.js",
   "contributes": {
+    "commands": [
+      {
+        "command": "revealInGhostty.revealProject",
+        "title": "Reveal in Ghostty",
+        "category": "Project"
+      },
+      {
+        "command": "revealInGhostty.revealFile",
+        "title": "Reveal in Ghostty",
+        "category": "File"
+      }
+    ],
     "menus": {
       "explorer/context": [
         {
           "command": "revealInGhostty.revealFile",
-          "group": "navigation"
+          "group": "navigation@21"
         }
       ]
-    },
-    "commands": [
-      {
-        "command": "revealInGhostty.revealProject",
-        "title": "Project: Reveal in Ghostty"
-      },
-      {
-        "command": "revealInGhostty.revealFile",
-        "title": "File: Reveal in Ghostty"
-      }
-    ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "rm -rf out && npm run esbuild-base -- --minify",
